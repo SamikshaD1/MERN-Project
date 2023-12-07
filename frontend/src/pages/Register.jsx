@@ -1,75 +1,138 @@
-import React from "react";
+import React, { useState } from "react";
+import register from "../images/register.png";
 
 function Register() {
+  const [user, setuser] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setuser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(user);
+  }
+
   return (
     <>
-      <div className="hero min-h-screen bg-base-200 m-15">
-        <div className="hero-content flex-col lg:flex-row-reverse gap-40">
-          <div className="text-center lg:text-left ">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-          </div>
+      <section className="bg-gray-100 mx-10">
+        <main className="container mx-auto py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Registration Image */}
+            <div className="registration-image reg-img">
+              <img
+                src={register}
+                alt="a nurse with a cute look"
+                width="400"
+                height="500"
+                className="rounded-lg"
+              />
+            </div>
 
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Username</span>
-                </label>
-                <input
-                  type="username"
-                  name="username"
-                  placeholder="username"
-                  className="input input-bordered"
-                  required
-                  id="username"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  className="input input-bordered"
-                  required
-                  name="email"
-                  id="email"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Phone</span>
-                </label>
-                <input
-                  type="phone"
-                  placeholder="phone"
-                  className="input input-bordered"
-                  required
-                  name="phone"
-                  id="phone"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  required
-                  name="password"
-                  id="password"
-                />
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
-            </form>
+            {/* Registration Form */}
+            <div className="registration-form">
+              <h1 className="text-4xl font-extrabold mb-6">
+                Registration Form
+              </h1>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label
+                    htmlFor="username"
+                    className="block text-gray-600 font-medium mb-2"
+                  >
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={user.username}
+                    onChange={handleChange}
+                    required
+                    autoComplete="on"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className="block text-gray-600 font-medium mb-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    autoComplete="on"
+                    value={user.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Email"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="phone"
+                    className="block text-gray-600 font-medium mb-2"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    type="phone"
+                    name="phone"
+                    autoComplete="on"
+                    value={user.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="phone"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="password"
+                    className="block text-gray-600 font-medium mb-2"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={user.password}
+                    onChange={handleChange}
+                    required
+                    autoComplete="off"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  // className="inline-flex items-center gap-2 rounded border border-indigo-600 px-8 py-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+                  className="w-full py-3 border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                >
+                  Register Now
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </div>
+        </main>
+      </section>
     </>
   );
 }
