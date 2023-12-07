@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import register from "../images/register.png";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [user, setuser] = useState({
@@ -18,10 +19,31 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // Navigator use
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
-  }
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(user),
+      });
+
+      console.log(response);
+      if (response.ok && response.status === 201) {
+        setuser({ username: "", email: "", phone: "", password: "" });
+        navigate("/login");
+      }
+    } catch (error) {
+      log.error(error);
+    }
+  };
 
   return (
     <>

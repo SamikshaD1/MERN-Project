@@ -7,6 +7,8 @@ import Services from "./pages/Services";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Errorpage from "./pages/errorpage";
+import Footer from "./pages/Footer";
 import "./App.css";
 
 function App() {
@@ -21,7 +23,9 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Errorpage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

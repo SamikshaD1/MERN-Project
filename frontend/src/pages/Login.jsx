@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import login from "../images/login.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({
@@ -17,9 +18,28 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // Navgate use
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        setUser({ email: "", password: "" });
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
