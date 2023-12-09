@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import login from "../images/login.png";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 function Login() {
   const [user, setUser] = useState({
@@ -20,6 +21,7 @@ function Login() {
 
   // Navgate use
   const navigate = useNavigate();
+  const { servertokenINS } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,9 @@ function Login() {
       });
 
       if (response.ok) {
+        const res_data = await response.json();
+        console.log("res from server: ", res_data.token);
+        servertokenINS(res_data.token);
         setUser({ email: "", password: "" });
         navigate("/");
       }
@@ -60,9 +65,7 @@ function Login() {
 
             {/* Registration Form */}
             <div className="registration-form">
-              <h1 className="text-4xl font-extrabold mb-6">
-                Registration Form
-              </h1>
+              <h1 className="text-4xl font-extrabold mb-6">Login</h1>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label

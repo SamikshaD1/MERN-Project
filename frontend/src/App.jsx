@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Errorpage from "./pages/errorpage";
 import Footer from "./pages/Footer";
+import Logout from "./pages/Logout";
 import "./App.css";
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/service" element={<Services />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<Errorpage />} />
         </Routes>
         <Footer />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import register from "../images/register.png";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 function Register() {
   const [user, setuser] = useState({
@@ -21,6 +22,7 @@ function Register() {
 
   // Navigator use
   const navigate = useNavigate();
+  const { servertokenINS } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +39,9 @@ function Register() {
 
       console.log(response);
       if (response.ok && response.status === 201) {
+        const res_data = await response.json();
+        console.log("res from server: ", res_data.token);
+        servertokenINS(res_data.token);
         setuser({ username: "", email: "", phone: "", password: "" });
         navigate("/login");
       }

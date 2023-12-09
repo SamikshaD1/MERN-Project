@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 function Navbar() {
+  const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    console.log("Navbar component mounted or isLoggedIn changed:", isLoggedIn);
+    // You can perform additional actions here if needed
+  }, [isLoggedIn]);
+
   return (
     <header className="bg-gray-800 text-indigo-500">
       <div className="container mx-auto flex items-center justify-between p-4">
@@ -43,22 +51,36 @@ function Navbar() {
                 Contact
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/register"
-                className="hover:text-gray-300 transition duration-300 ease-in-out"
-              >
-                Register
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/login"
-                className="hover:text-gray-300 transition duration-300 ease-in-out"
-              >
-                Login
-              </NavLink>
-            </li>
+            {/* Logout functionality */}
+            {isLoggedIn ? (
+              <li>
+                <NavLink
+                  to="/logout"
+                  className="hover:text-gray-300 transition duration-300 ease-in-out"
+                >
+                  Logout
+                </NavLink>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/register"
+                    className="hover:text-gray-300 transition duration-300 ease-in-out"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/login"
+                    className="hover:text-gray-300 transition duration-300 ease-in-out"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
