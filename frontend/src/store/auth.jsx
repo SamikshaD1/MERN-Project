@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setuser] = useState(" ");
+  const [user, setuser] = useState("");
 
   let isLoggedIn = !!token;
   // let isLoggedIn = ;
@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   console.log("is login " + isLoggedIn + token);
 
   const servertokenINS = (serverToken) => {
+    setToken(serverToken);
     return localStorage.setItem("token", serverToken);
   };
 
