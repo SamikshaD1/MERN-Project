@@ -2,13 +2,12 @@ const Service = require("../models/service-model")
 
 const services = async (req, res) => {
     try {
-        const response = await Service.find();
-        if (!response) {
+        const ServiceData = await Service.find();
+        if (!ServiceData) {
             res.status(404).json({ msg: "No service found" });
-
         }
-        console.log(response);
-        res.status(200).json({ msg: response });
+        console.log(ServiceData);
+        res.status(200).json({ msg: ServiceData });
     } catch (error) {
         console.log(`service ${error}`);
     }

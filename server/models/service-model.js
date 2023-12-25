@@ -9,4 +9,4 @@ const serviceSchema = new Schema({
 
 const Service = new model("Service", serviceSchema)
 
-module.exports = Service;
+module.exports = Service; 
