@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 function Navbar() {
   const { isLoggedIn } = useAuth();
-
-  useEffect(() => {
-    console.log("Navbar component mounted or isLoggedIn changed:", isLoggedIn);
-    // You can perform additional actions here if needed
-  }, [isLoggedIn]);
 
   return (
     <header className="bg-gray-800 text-indigo-500">

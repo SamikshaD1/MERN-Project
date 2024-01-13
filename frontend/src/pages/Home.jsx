@@ -9,12 +9,12 @@ function Home() {
     <main className="p-5">
       {/* 1st section */}
       <section className="section-hero bg-white py-16">
-        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center  ">
           {/* hero content */}
           <div className="hero-content">
             <p className="text-gray-500">We are the World Best IT Company</p>
-            <h1 className="text-4xl font-bold mb-4">
-              Welcome to Thapa Technical
+            <h1 className="text-4xl font-bold mb-5">
+              Welcome to Aditya Deshmukh
             </h1>
             <p className="text-gray-600">
               Are you ready to take your business to the next level with
