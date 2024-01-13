@@ -1,17 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import about from "../images/about.png";
-import { useAuth } from "../store/auth";
 
 function About() {
-  const { user } = useAuth();
-
   return (
     <main>
       <section className="bg-gray-100 py-20">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col justify-center">
-            <p>Welcome, {user.username}</p>
             {/* <p>We care to cure your Health</p> */}
             <h1 className="text-4xl font-bold mb-4">Why Choose Us?</h1>
             <p className="mb-4">

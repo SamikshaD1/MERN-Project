@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import Submit from "../images/support.png";
-import { useAuth } from "../store/auth";
 
 function Contact() {
   const [contact, setContact] = useState({
     username: "",
-    email: " ",
+    email: "",
     message: "",
   });
-
-  const [userData, setuserData] = useState(true);
-
-  const { user } = useAuth();
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -23,14 +18,6 @@ function Contact() {
     });
   };
 
-  if (userData && user) {
-    setContact({
-      username: user.username,
-      email: user.email,
-      message: "",
-    });
-    setuserData(false);
-  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(contact);
