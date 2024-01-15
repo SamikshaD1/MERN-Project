@@ -11,6 +11,10 @@ import Errorpage from "./pages/errorpage";
 import Footer from "./pages/Footer";
 import Logout from "./pages/Logout";
 import "./App.css";
+import AdminLayout from "./Layout/admin-Layout";
+import Adminusers from "./Layout/Admin-users";
+import AdminContacts from "./Layout/Admin-Contacts";
+import AdminUserEdit from "./Layout/Admin-UserEdit";
 
 function App() {
   return (
@@ -26,6 +30,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<Errorpage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="users" element={<Adminusers />} />
+            <Route path="contacts" element={<AdminContacts />} />
+            <Route path="users/:id/edit" element={<AdminUserEdit />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

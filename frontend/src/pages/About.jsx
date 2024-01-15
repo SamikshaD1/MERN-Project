@@ -11,7 +11,12 @@ function About() {
       <section className="bg-gray-100 py-20">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col justify-center">
-            <p>Welcome, {user.username}</p>
+            {
+              user.username ?
+                <p>Welcome,  {user.username}</p> :
+                <p>Welcome</p>
+
+            }
             {/* <p>We care to cure your Health</p> */}
             <h1 className="text-4xl font-bold mb-4">Why Choose Us?</h1>
             <p className="mb-4">

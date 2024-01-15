@@ -1,4 +1,4 @@
-const { Schema, model, Collection } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const contactSchema = new Schema({
     username: { type: String, required: true },

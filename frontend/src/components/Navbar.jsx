@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 function Navbar() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
+
+
 
   return (
     <header className="bg-gray-800 text-indigo-500">
@@ -48,14 +50,27 @@ function Navbar() {
             </li>
             {/* Logout functionality */}
             {isLoggedIn ? (
-              <li>
-                <NavLink
-                  to="/logout"
-                  className="hover:text-gray-300 transition duration-300 ease-in-out"
-                >
-                  Logout
-                </NavLink>
-              </li>
+              <>
+                {
+                  user.isAdmin === true &&
+                  <li>
+                    <NavLink
+                      to="/admin"
+                      className="hover:text-gray-300 transition duration-300 ease-in-out"
+                    >
+                      Admin
+                    </NavLink>
+                  </li>
+                }
+                <li>
+                  <NavLink
+                    to="/logout"
+                    className="hover:text-gray-300 transition duration-300 ease-in-out"
+                  >
+                    Logout
+                  </NavLink>
+                </li>
+              </>
             ) : (
               <>
                 <li>

@@ -6,9 +6,9 @@ import Analytics from "../components/Analytics";
 
 function Home() {
   return (
-    <main className="p-5">
+    < >
       {/* 1st section */}
-      <section className="section-hero bg-white py-16">
+      <section className="section-hero bg-white py-16 flex justify-center">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center  ">
           {/* hero content */}
           <div className="hero-content">
@@ -52,7 +52,7 @@ function Home() {
       <Analytics />
 
       {/* 3rd section */}
-      <section className="section-hero bg-white py-16">
+      <section className="section-hero bg-white py-16 flex justify-center">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* hero images */}
           <div className="hero-image">
@@ -89,7 +89,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
 

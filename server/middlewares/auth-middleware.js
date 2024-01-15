@@ -11,7 +11,6 @@ const authMiddleware = async (req, res, next) => {
     }
 
     const jwtToken = token.replace('Bearer ', '').trim();
-    console.log("token", jwtToken);
 
     try {
         const isVerified = jwt.verify(jwtToken, process.env.JWT_SECRET_KEY)
@@ -32,3 +31,4 @@ const authMiddleware = async (req, res, next) => {
 
 }
 module.exports = authMiddleware;
+
